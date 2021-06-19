@@ -1,16 +1,13 @@
 <template>
-  <Layout>
-    <router-view/>
-  </Layout>
+  <div>feed</div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+name: "Feed"
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

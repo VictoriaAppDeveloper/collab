@@ -1,0 +1,9 @@
+/*! @import */
+@tailwind base;
+@layer base {
+    html, body, #app, .layout {
+        @apply min-h-screen;
+    }
+}
+@tailwind components;
+@tailwind utilities;
