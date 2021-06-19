@@ -7,7 +7,3 @@ export default {
 name: "Feed"
 }
 </script>
-
-<style scoped>
-
-</style>

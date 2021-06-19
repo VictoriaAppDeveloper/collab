@@ -1,6 +1,5 @@
 <template>
-  <div class="bg-brand bg-4x layout animate-gradient">
-    auth layout
+  <div class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-4x layout animate-gradient">
     <slot/>
   </div>
 </template>
@@ -11,6 +10,3 @@ name: "AuthLayout"
 }
 </script>
 
-<style scoped>
-
-</style>
