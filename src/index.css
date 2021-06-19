@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
       /*! @import */
+
 @tailwind base;
 @layer base {
     html, body, #app, .layout {
@@ -28,8 +29,23 @@
     button span {
         @apply text-transparent bg-clip-text text-red-500;
     }
+    .glitch {
+        @apply relative p-8;
+    }
+    .glitch:before, .glitch:after {
+        content:attr(title);
+        @apply text-white absolute top-0 p-8 overflow-hidden;
+    }
+    .glitch:before {
+        @apply left-1 animate-glitch-before;
+        text-shadow: -3px 0 red;
+    }
+    .glitch:after {
+        @apply -left-1 animate-glitch-after;
+        text-shadow: -3px 0 blue;
+    }
     a {
-        @apply text-blue-400
+        @apply text-blue-400;
     }
     input:focus ~ label,
     input:not(:placeholder-shown) ~ label,

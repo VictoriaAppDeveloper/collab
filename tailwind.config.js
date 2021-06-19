@@ -1,4 +1,14 @@
 const colors = require('tailwindcss/colors')
+const {random} = require('./utils')
+
+function glitch () {
+    let result = {}
+    for(let i = 0; i < 20; i++) {
+        result['' + (i * 5) + '%']  = {clip: 'rect(' + random(150) + 'px, auto, ' + random(150) + 'px, auto)'}
+    }
+    return result
+}
+
 
 module.exports = {
     purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
@@ -50,13 +60,17 @@ module.exports = {
                 '0': 0
             },
             animation: {
-                gradient: 'gradient 15s ease infinite'
+                gradient: 'gradient 8s ease infinite',
+                'glitch-before': 'glitch-before 2s linear 0s infinite alternate',
+                'glitch-after': 'glitch-after 2s linear 0s infinite alternate',
             },
             keyframes: {
                 gradient: {
                     '0% 100%': {'background-position': '0% 50%;'},
                     '50%': {'background-position': '100% 50%'},
-                }
+                },
+                'glitch-before': glitch(),
+                'glitch-after': glitch(),
             }
         },
     },

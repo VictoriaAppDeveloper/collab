@@ -1,5 +1,14 @@
 <template>
-  <div class="flex justify-end min-h-screen">
+  <div class="flex min-h-screen">
+    <div class="flex-1 hidden sm:block">
+      <Slides class="h-screen w-full">
+        <Slide v-for="(slide, key) in slides" :key="key">
+          <div class="h-full w-full flex items-center justify-center">
+            <h2 class="glitch text-5xl lg:text-9xl font-extrabold text-white" :title="slide">{{ slide }}</h2>
+          </div>
+        </Slide>
+      </Slides>
+    </div>
     <div class="bg-white min-h-screen w-full sm:w-144">
       <div class="flex py-16 justify-center">
         <router-link to="/">
@@ -39,7 +48,14 @@
 </template>
 
 <script>
+import Slides from "@/components/Slides";
+import Slide from "@/components/Slide";
 export default {
-name: "Login"
+name: "Login",
+  components: {Slide, Slides},
+  setup() {
+    let slides = ["Смотри", "Снимай", "Удивляй"];
+    return { slides };
+  }
 }
 </script>
