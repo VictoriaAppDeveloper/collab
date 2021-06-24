@@ -1,5 +1,5 @@
 <template>
-  <div>feed</div>
+  <UIPage>feed</UIPage>
 </template>
 
 <script>

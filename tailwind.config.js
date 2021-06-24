@@ -42,7 +42,8 @@ module.exports = {
         },
         extend: {
             backgroundSize: {
-                '4x': '400% 400%',
+                '4x': '400vw 400vh',
+                '2x-percents': '200% 200%',
             },
             backgroundImage: {
                 brand: 'linear-gradient(-45deg, '
@@ -53,14 +54,23 @@ module.exports = {
             width: {
                 '144': '36rem'
             },
+            height: {
+                max: 'max-content'
+            },
             zIndex: {
                 'n1': -1,
+            },
+            transitionTimingFunction: {
+                'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+                'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
             },
             transformOrigin: {
                 '0': 0
             },
             animation: {
                 gradient: 'gradient 8s ease infinite',
+                'gradient-2x-speed': 'gradient 4s ease infinite',
+                'gradient-4x-speed': 'gradient 2s ease infinite',
                 'glitch-before': 'glitch-before 2s linear 0s infinite alternate',
                 'glitch-after': 'glitch-after 2s linear 0s infinite alternate',
             },

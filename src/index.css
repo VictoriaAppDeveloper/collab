@@ -3,6 +3,49 @@
 
 @tailwind base;
 @layer base {
+
+    .slide-left-enter-active,
+    .slide-left-leave-active,
+    .slide-right-enter-active,
+    .slide-right-leave-active {
+        transform: translateX(0);
+        opacity: 1;
+        z-index: 10;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .slide-left-enter,
+    .slide-right-leave-active {
+        opacity: 0;
+        z-index: 0;
+        transform: translate(100%, 0);
+    }
+
+    .slide-left-leave-active,
+    .slide-right-enter {
+        opacity: 0;
+        z-index: 0;
+        transform: translate(-100%, 0);
+    }
+    .slide-left-phantom-enter-active,
+    .slide-left-phantom-leave-active,
+    .slide-right-phantom-enter-active,
+    .slide-right-phantom-leave-active {
+        transform: translateX(0);
+        transition: all 15s ease-in-out;
+    }
+
+    .slide-left-phantom-enter,
+    .slide-right-phantom-leave-active {
+        transform: translate(100%, 0);
+    }
+
+    .slide-left-phantom-leave-active,
+    .slide-right-phantom-enter {
+        transform: translate(-100%, 0);
+    }
+
+
     html, body, #app, .layout {
         @apply min-h-screen;
     }
@@ -18,15 +61,31 @@
     .error {
         @apply text-sm text-red-600 hidden;
     }
-    button {
+    .button {
         @apply border-gradient-l-red-600-purple-500-gray-50
         transition-all duration-1000 ease-in-out
         border py-3 px-7 outline-none border-solid border-transparent rounded font-light;
     }
-    button:hover {
+    .button.button--inverted {
+        @apply bg-gradient-to-r from-purple-400 via-pink-500 to-red-500;
+    }
+    .button.button--inverted span {
+        @apply text-white;
+    }
+    .button.button--inverted:hover {
+        @apply bg-2x-percents animate-gradient-4x-speed;
+    }
+    .button.button--no-borders {
+        @apply border-0;
+    }
+    .button.button--icon {
+        @apply p-0;
+        background: transparent;
+    }
+    .button:not(.button--inverted):not(.button--icon):hover {
         @apply border-gradient-l-45-red-600-purple-500-gray-50;
     }
-    button span {
+    .button span {
         @apply text-transparent bg-clip-text text-red-500;
     }
     .glitch {
@@ -44,6 +103,7 @@
         @apply -left-1 animate-glitch-after;
         text-shadow: -3px 0 blue;
     }
+
     a {
         @apply text-blue-400;
     }

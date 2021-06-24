@@ -1,6 +1,6 @@
 <template>
-  <div class="slides" ref="slides">
-    <div class="slides__container relative" :style="{top: -(100 * state.current) + '%'}">
+  <div class="slides overflow-hidden" ref="slides">
+    <div class="slides__container relative transition-all out-expo" :style="{top: -(100 * state.current) + '%'}">
       <slot></slot>
     </div>
   </div>
