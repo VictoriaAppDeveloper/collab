@@ -4,7 +4,7 @@
     </div>
     <div class="page_shadow bg-black absolute w-full h-full right-full top-0">
     </div>
-    <div class="page_content flex-1 flex flex-col">
+    <div class="page_content flex-1 flex flex-col h-full">
       <slot/>
     </div>
   </div>

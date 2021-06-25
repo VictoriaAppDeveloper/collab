@@ -92,5 +92,6 @@ module.exports = {
     },
     plugins: [
         require('tailwindcss-border-gradient-radius'),
+        require('@tailwindcss/line-clamp'),
     ],
 }

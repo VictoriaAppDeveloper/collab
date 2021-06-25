@@ -1,7 +1,7 @@
 <template>
   <div class="layout flex flex-col h-screen">
     <AppHeader/>
-    <div class="flex-1 overflow-hidden">
+    <div class="flex-1 overflow-hidden relative">
       <slot/>
     </div>
     <UINav :modelValue="pages"/>

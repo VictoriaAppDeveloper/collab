@@ -1,10 +1,12 @@
 <template>
   <nav class="nav rounded-t-xl shadow-up relative z-30">
-    <div class="container mx-auto">
+    <div class="container mx-auto px-4">
       <ul class="flex justify-between py-4">
         <li v-for="(item, key) of modelValue" :key="key">
           <UIButton icon :to="{path: item.to}">
-            <vue-feather :type="item.icon" size="36"></vue-feather>
+            <div  class="w-12 h-12 flex justify-center items-center">
+              <vue-feather :type="item.icon"></vue-feather>
+            </div>
           </UIButton>
         </li>
       </ul>

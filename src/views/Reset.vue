@@ -2,7 +2,7 @@
   <UIPage class="reset-page">
     <div class="py-16 grid grid-cols-4 mx-auto w-11/12 sm:w-7/12">
       <div class="col-start-1 col-end-2 flex items-center">
-        <UIButton icon no-borders to="/" class="mt-1">
+        <UIButton icon no-borders @click="$router.go(-1)" class="mt-1">
           <vue-feather type="arrow-left-circle" size="36"></vue-feather>
         </UIButton>
       </div>

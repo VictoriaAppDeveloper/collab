@@ -27,25 +27,6 @@
         z-index: 0;
         transform: translate(-100%, 0);
     }
-    .slide-left-phantom-enter-active,
-    .slide-left-phantom-leave-active,
-    .slide-right-phantom-enter-active,
-    .slide-right-phantom-leave-active {
-        transform: translateX(0);
-        transition: all 15s ease-in-out;
-    }
-
-    .slide-left-phantom-enter,
-    .slide-right-phantom-leave-active {
-        transform: translate(100%, 0);
-    }
-
-    .slide-left-phantom-leave-active,
-    .slide-right-phantom-enter {
-        transform: translate(-100%, 0);
-    }
-
-
     html, body, #app, .layout {
         @apply min-h-screen;
     }
@@ -77,6 +58,9 @@
     }
     .button.button--no-borders {
         @apply border-0;
+    }
+    .button.button--icon.router-link-active {
+        @apply bg-red-100 rounded-full;
     }
     .button.button--icon {
         @apply p-0;

@@ -7,10 +7,11 @@
 </template>
 
 <script>
-import { onMounted, reactive, onBeforeMount } from 'vue'
+import { onMounted, reactive, onBeforeMount, onUnmounted } from 'vue'
 export default {
   name: "Slides",
   setup(_, {slots}) {
+    let interval = null
     const state = reactive({
       childrenCount: 0,
       current: 0
@@ -22,9 +23,12 @@ export default {
     onBeforeMount(() => {
       state.childrenCount = slots.default()[0].children.length;
     })
+    onUnmounted(() => {
+      clearInterval(interval)
+    })
 
     onMounted(() => {
-      setInterval(()=>{
+      interval = setInterval(()=>{
         animate()
       },3000);
     })
