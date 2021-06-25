@@ -41,7 +41,6 @@ name: "AuthLayout",
     const viewport = ref()
 
     watch(() => route.path, () => {
-      console.log(viewport)
       viewport.value.scrollTop = 0
     })
     let slides = ["Смотри", "Снимай", "Удивляй"];

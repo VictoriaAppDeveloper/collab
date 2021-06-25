@@ -9,7 +9,7 @@
               }"
              :to="to"
   >
-    <span>
+    <span class="flex justify-center">
           <slot/>
     </span>
   </component>

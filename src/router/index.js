@@ -2,7 +2,12 @@ import { createWebHistory, createRouter } from "vue-router";
 import Feed from "@/views/Feed.vue";
 import Landing from "@/views/Landing.vue";
 import Register from "@/views/Register.vue";
-import Sms from "@/views/Sms.vue";
+import Confirm from "@/views/Confirm.vue";
+import Reset from "@/views/Reset.vue";
+import Shuffle from "@/views/Shuffle.vue";
+import Profile from "@/views/Profile.vue";
+import Add from "@/views/Add.vue";
+import NewPassword from "@/views/NewPassword.vue";
 
 const routes = [
     {
@@ -10,6 +15,44 @@ const routes = [
         name: "Feed",
         component: Feed,
         meta: {
+            transitionName: 'slide',
+            transitionRules: {
+                'slide-right': ['/add', '/shuffle', '/profile']
+            }
+        }
+    },
+    {
+        path: "/add",
+        name: "Add",
+        component: Add,
+        meta: {
+            transitionName: 'slide',
+            transitionRules: {
+                'slide-right': ['/profile'],
+                'slide-left': ['/feed', 'shuffle']
+            }
+        }
+    },
+
+    {
+        path: "/shuffle",
+        name: "Shuffle",
+        component: Shuffle,
+        meta: {
+            transitionName: 'slide',
+            transitionRules: {
+                'slide-right': ['/add', '/profile'],
+                'slide-left': ['/feed']
+            }
+        }
+    },
+    {
+        path: "/profile",
+        name: "Profile",
+        component: Profile,
+        meta: {
+            transitionName: 'slide',
+            'slide-left': ['/feed', '/add', 'shuffle']
         }
     },
     {
@@ -31,9 +74,27 @@ const routes = [
         }
     },
     {
-        path: "/sms",
-        name: "Sms",
-        component: Sms,
+        path: "/confirm",
+        name: "Confirm",
+        component: Confirm,
+        meta: {
+            layout: 'AuthLayout',
+            transitionName: 'slide'
+        }
+    },
+    {
+        path: "/reset",
+        name: "Reset",
+        component: Reset,
+        meta: {
+            layout: 'AuthLayout',
+            transitionName: 'slide'
+        }
+    },
+    {
+        path: "/new-password",
+        name: "NewPassword",
+        component: NewPassword,
         meta: {
             layout: 'AuthLayout',
             transitionName: 'slide'
@@ -46,6 +107,19 @@ const router = createRouter({
     routes,
 
 });
+
+const directions = ['slide-right', 'slide-right']
+
+router.beforeEach((to, from) => {
+    if (to.meta.transitionRules) {
+        directions.forEach(direction => {
+            if(to.meta.transitionRules[direction] && to.meta.transitionRules[direction].find(path => path === from.path)) {
+                to.meta.transitionName = direction
+            }
+        })
+    }
+})
+
 
 
 

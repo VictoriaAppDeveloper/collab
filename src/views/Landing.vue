@@ -21,10 +21,10 @@
           </div>
           <div class="grid lg:grid-cols-2 sm:gap-4 gap-6 mt-4">
             <div class="flex items-center justify-center lg:justify-start row-start-2 row-end-3 sm:row-start-1 sm:row-end-2">
-              <router-link to="/">Забыли пароль?</router-link>
+              <router-link to="/reset">Забыли пароль?</router-link>
             </div>
             <div>
-              <UIButton block>
+              <UIButton block to="/feed">
                  Войти
               </UIButton>
             </div>

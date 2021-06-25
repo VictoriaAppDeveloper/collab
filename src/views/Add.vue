@@ -1,13 +1,17 @@
 <template>
   <UIPage>
-    feed
+    add
   </UIPage>
 </template>
 
 <script>
 import UIPage from "@/components/UI/UIPage";
 export default {
-name: "Feed",
+name: "Add",
   components: {UIPage}
 }
 </script>
+
+<style scoped>
+
+</style>

@@ -1,13 +1,17 @@
 <template>
   <UIPage>
-    feed
+      shuffle
   </UIPage>
 </template>
 
 <script>
 import UIPage from "@/components/UI/UIPage";
 export default {
-name: "Feed",
+name: "Shuffle",
   components: {UIPage}
 }
 </script>
+
+<style scoped>
+
+</style>

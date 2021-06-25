@@ -9,7 +9,7 @@
                 <component :is="Component" />
         </transition>
       </router-view>
-      <div class="absolute w-full h-full overflow-hidden z-0">
+      <div class="absolute w-full h-full overflow-hidden z-0 top-0">
           <component :is="state.currentComponent"/>
       </div>
   </Layout>
@@ -27,7 +27,6 @@ export default {
       transitionName: DEFAULT_TRANSITION,
       duration: 500,
       nextComponent: null,
-      prevComponent: null,
       toDepth: null,
       fromDepth: null,
       currentComponent: null
@@ -35,17 +34,13 @@ export default {
 
     watch(() => route, (to, from) => {
           state.nextComponent = to.matched[to.matched.length - 1].components.default
-          state.prevComponent = from.matched[from.matched.length - 1].components.default
           let transitionName = to.meta.transitionName || from.meta.transitionName;
           if (transitionName === 'slide') {
             state.toDepth = to.path.split('/').length
             state.fromDepth = from.path.split('/').length
-            transitionName = state.toDepth < state.fromDepth ? 'slide-right' : 'slide-left'
+            transitionName = (!window.history.state.forward) ? 'slide-left' : 'slide-right'
           }
-
-          if (transitionName === 'slide-left') {
-            state.currentComponent = state.nextComponent
-          }
+          state.currentComponent = state.nextComponent
 
           state.transitionName = transitionName || DEFAULT_TRANSITION;
         },
@@ -55,8 +50,10 @@ export default {
         state.currentComponent = null
     }
 
+
     return {route, state, afterEnter}
   },
+
 }
 </script>
 

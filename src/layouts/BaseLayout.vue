@@ -1,14 +1,47 @@
 <template>
-  <div class="layout">
-    base layout
+  <div class="layout flex flex-col h-screen">
     <AppHeader/>
-    <slot/>
+    <div class="flex-1 overflow-hidden">
+      <slot/>
+    </div>
+    <UINav :modelValue="pages"/>
   </div>
 </template>
 
 <script>
 import AppHeader from "@/components/AppHeader";
+import UINav from "@/components/UI/UINav";
 export default {
-  components: {AppHeader}
+  components: {UINav, AppHeader},
+  setup () {
+    let pages = [
+      {
+        name: "Feed",
+        to: '/feed',
+        icon: 'align-left'
+
+      },
+      {
+        name: "Shuffle",
+        to: '/shuffle',
+        icon: 'shuffle'
+
+      },
+      {
+        name: "Add",
+        to: '/add',
+        icon: 'plus'
+
+      },
+      {
+        name: "Feed",
+        to: '/profile',
+        icon: 'user'
+
+      }
+    ];
+
+    return {pages}
+  }
 }
 </script>

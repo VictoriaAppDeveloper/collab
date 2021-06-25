@@ -67,6 +67,9 @@ module.exports = {
             transformOrigin: {
                 '0': 0
             },
+            boxShadow: {
+                up: '0px -3px 15px -5px rgba(0, 0, 0, 0.5);'
+            },
             animation: {
                 gradient: 'gradient 8s ease infinite',
                 'gradient-2x-speed': 'gradient 4s ease infinite',
