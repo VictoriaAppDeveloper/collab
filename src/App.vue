@@ -1,62 +1,17 @@
 <template>
   <Layout>
-    <router-view v-slot="{ Component }">
-        <transition
-            :name="state.transitionName"
-            :duration="state.duration"
-            @enter="afterEnter"
-            mode="out-in">
-                <component :is="Component" />
-        </transition>
-      </router-view>
-      <div class="absolute w-full h-full overflow-hidden z-0 top-0">
-          <component :is="state.currentComponent"/>
-      </div>
+    <UIRouterView/>
   </Layout>
 </template>
 
 <script>
-import { watch, reactive } from "vue";
-import { useRoute } from "vue-router";
+import UIRouterView from "@/components/UI/UIRouterView";
 export default {
   name: 'App',
+  components: {UIRouterView},
   setup() {
-    const DEFAULT_TRANSITION = '';
-    const route = useRoute()
-    const state = reactive({
-      transitionName: DEFAULT_TRANSITION,
-      duration: 500,
-      nextComponent: null,
-      toDepth: null,
-      fromDepth: null,
-      currentComponent: null
-    })
-
-    watch(() => route, (to, from) => {
-          state.nextComponent = to.matched[to.matched.length - 1].components.default
-          let transitionName = to.meta.transitionName || from.meta.transitionName;
-          if (transitionName === 'slide') {
-            state.toDepth = to.path.split('/').length
-            state.fromDepth = from.path.split('/').length
-            transitionName = (!window.history.state.forward) ? 'slide-left' : 'slide-right'
-          }
-          state.currentComponent = state.nextComponent
-
-          state.transitionName = transitionName || DEFAULT_TRANSITION;
-        },
-        {deep: true}
-    )
-    const afterEnter = () => {
-        state.currentComponent = null
-    }
-
-
-    return {route, state, afterEnter}
   },
 
 }
 </script>
 
-<style>
-
-</style>

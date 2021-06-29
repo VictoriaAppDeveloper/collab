@@ -6,7 +6,7 @@
 
 <script>
 import BaseLayout from './BaseLayout'
-import { shallowRef, watch } from 'vue'
+import {shallowRef, watch} from 'vue'
 import { useRoute } from 'vue-router'
 
 export default {
@@ -14,6 +14,7 @@ export default {
   setup () {
     const layout = shallowRef(BaseLayout)
     const route = useRoute()
+
     watch(
         () => route.meta,
         async meta => {

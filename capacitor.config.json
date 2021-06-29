@@ -1,0 +1,6 @@
+{
+  "appId": "com.collab.app",
+  "appName": "collab",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

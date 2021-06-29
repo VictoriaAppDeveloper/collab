@@ -1,12 +1,13 @@
 <template>
   <component :is="(!!to) ? 'router-link' : 'button'"
              class="button inline-block text-center"
-             :class="{
+             :class="[{
                 'button--no-borders': noBorders,
                 'button--icon': icon,
                 'w-full': block,
-                'button--inverted': inverted
-              }"
+                'button--inverted': inverted,
+                'button--active': active,
+              }, buttonSize()]"
              :to="to"
   >
     <span class="flex justify-center">
@@ -37,8 +38,19 @@ export default {
     },
     to: {
       default: '',
+    },
+    active: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String
     }
   },
+  setup(props) {
+    const buttonSize = () => (props.size && props.size.length > 0) ? 'button--' + props.size : null;
+    return {props, buttonSize}
+  }
 }
 </script>
 

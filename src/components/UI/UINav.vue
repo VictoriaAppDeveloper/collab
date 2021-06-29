@@ -1,9 +1,12 @@
 <template>
-  <nav class="nav rounded-t-xl shadow-up relative z-30">
+  <nav class="nav rounded-t-xl shadow-up relative">
     <div class="container mx-auto px-4">
       <ul class="flex justify-between py-4">
         <li v-for="(item, key) of modelValue" :key="key">
-          <UIButton icon :to="{path: item.to}">
+          <UIButton icon
+                    :to="{path: item.to}"
+                    :active="item.to.includes(route.path)"
+          >
             <div  class="w-12 h-12 flex justify-center items-center">
               <vue-feather :type="item.icon"></vue-feather>
             </div>
@@ -17,6 +20,7 @@
 <script>
 import UIButton from "@/components/UI/UIButton";
 import VueFeather from 'vue-feather';
+import {useRoute} from "vue-router";
 
 export default {
   name: "UINav",
@@ -27,6 +31,10 @@ export default {
       default: () => []
     }
   },
+  setup () {
+    const route = useRoute()
+    return {route}
+  }
 }
 </script>
 
