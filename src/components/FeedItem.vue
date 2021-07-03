@@ -2,7 +2,7 @@
   <UICard>
     <template #head>
       <div class="flex justify-between">
-        <router-link to="/profile/1" class="flex items-center">
+        <router-link to="/user/1" class="flex items-center">
           <UIAvatar>
             <img :src="modelValue.avatar" alt="" class="object-contain">
           </UIAvatar>

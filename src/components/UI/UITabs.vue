@@ -6,6 +6,7 @@
                 :to="section.to"
                 :active="route.path === section.to"
                 size="sm"
+                no-hover
       >
         {{section.title}}
       </UIButton>

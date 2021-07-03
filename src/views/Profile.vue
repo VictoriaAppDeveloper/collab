@@ -1,7 +1,7 @@
 <template>
   <UIPage>
     <div class="grid grid-rows-6 h-full">
-      <div class="flex justify-between px-2 row-start-1 row-end-2">
+      <div class="flex justify-between items-center px-2 row-start-1 row-end-2">
         <div class="flex items-center">
           <UIAvatar size="12">
             <img src="https://www.kindpng.com/picc/m/41-414998_shoulder-human-behavior-head-user-profile-avatar-icon.png" alt="" class="object-contain">
@@ -11,7 +11,7 @@
         </span>
         </div>
         <template v-if="route.meta.me">
-          <UIButton icon no-borders>
+          <UIButton icon no-borders to="/edit">
             <vue-feather type="edit"></vue-feather>
           </UIButton>
         </template>
@@ -38,31 +38,33 @@ export default {
   components: {UIRouterView, UITabs, UIButton, UIAvatar, UIPage, VueFeather},
   setup() {
     const route = useRoute()
-
+    const partRoute = (route.params.id) ?
+        route.matched[0].path.replace(':id', route.params.id) :
+        route.matched[0].path
 
     const sections = [
       {
-        to: '/profile',
+        to: partRoute,
         title: 'Все'
       },
       {
-        to: '/profile/pictures',
+        to: partRoute + '/pictures',
         title: 'Изображения'
       },
       {
-        to: '/profile/video',
+        to: partRoute + '/video',
         title: 'Видео'
       },
       {
-        to: '/profile/translations',
+        to: partRoute + '/translations',
         title: 'Трансляции'
       },
       {
-        to: '/profile/conferences',
+        to: partRoute +'/conferences',
         title: 'Конференции'
       },
       {
-        to: '/profile/3d',
+        to: partRoute + '/3d',
         title: '3d'
       },
     ]

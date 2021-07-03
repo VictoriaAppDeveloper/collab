@@ -20,6 +20,7 @@ import FeedVideo from "@/views/feed/Video.vue";
 import FeedConferences from "@/views/feed/Conferences.vue";
 import FeedTranslations from "@/views/feed/Translations.vue";
 import Feed3d from "@/views/feed/3d.vue";
+import Edit from "@/views/Edit.vue";
 import NewPassword from "@/views/NewPassword.vue";
 
 const routes = [
@@ -150,6 +151,15 @@ const routes = [
         component: Post,
         meta: {
             layout: 'PostLayout',
+            transitionName: 'slide',
+        }
+    },
+    {
+        path: "/edit",
+        name: "Edit",
+        component: Edit,
+        meta: {
+            layout: 'PageLayout',
             transitionName: 'slide',
         }
     },
@@ -304,6 +314,129 @@ const routes = [
         ]
     },
     {
+        path: "/user/:id",
+        name: "User",
+        component: Profile,
+        meta: {
+            transitionName: 'slide',
+        },
+        children: [
+            {
+                path: "",
+                name: "UserAll",
+                component: ProfileAll,
+                meta: {
+                    transitionName: 'slide',
+                    transitionRules: {
+                        'slide-right': [
+                            '/user/:id/pictures',
+                            '/user/:id/video',
+                            '/user/:id/translations',
+                            '/user/:id/conferences',
+                            '/user/:id/3d'
+                        ]
+                    }
+                },
+            },
+            {
+                path: "/user/:id/pictures",
+                name: "UserPictures",
+                component: ProfilePictures,
+                meta: {
+                    transitionName: 'slide',
+                    transitionRules: {
+                        'slide-left': [
+                            ''
+                         ],
+                        'slide-right': [
+                            '/user/:id/video',
+                            '/user/:id/translations',
+                            '/user/:id/conferences',
+                            '/user/:id/3d'
+                        ]
+                    }
+                },
+            },
+            {
+                path: "/user/:id/video",
+                name: "UserVideo",
+                component: ProfileVideo,
+                meta: {
+                    transitionName: 'slide',
+                    transitionRules: {
+                        'slide-left': [
+                            '',
+                            '/user/:id/pictures',
+
+                        ],
+                        'slide-right': [
+                            '/user/:id/translations',
+                            '/user/:id/conferences',
+                            '/user/:id/3d'
+                        ]
+                    }
+                },
+            },
+            {
+                path: "/user/:id/translations",
+                name: "UserTranslations",
+                component: ProfileTranslations,
+                meta: {
+                    transitionName: 'slide',
+                    transitionRules: {
+                        'slide-left': [
+                            '',
+                            '/user/:id/pictures',
+                            '/user/:id/video',
+
+
+                        ],
+                        'slide-right': [
+                            '/user/:id/conferences',
+                            '/user/:id/3d'
+                        ]
+                    }
+                },
+            },
+            {
+                path: "/user/:id/conferences",
+                name: "UserConferences",
+                component: ProfileConferences,
+                meta: {
+                    transitionName: 'slide',
+                    transitionRules: {
+                        'slide-left': [
+                            '',
+                            '/user/:id/pictures',
+                            '/user/:id/video',
+                            '/user/:id/translations',
+                        ],
+                        'slide-right': [
+                            '/user/:id/3d'
+                        ]
+                    }
+                },
+            },
+            {
+                path: "/user/:id/3d",
+                name: "User3d",
+                component: Profile3d,
+                meta: {
+                    transitionName: 'slide',
+                    transitionRules: {
+                        'slide-left': [
+                            '',
+                            '/user/:id/pictures',
+                            '/user/:id/video',
+                            '/user/:id/translations',
+                            '/user/:id/conferences',
+                        ]
+                    }
+                },
+            }
+        ]
+    },
+    {
         path: "/",
         name: "Landing",
         component: Landing,
@@ -361,7 +494,8 @@ const directions = ['slide-right', 'slide-right']
 router.beforeEach((to, from) => {
     if (to.meta.transitionRules) {
         directions.forEach(direction => {
-            if(to.meta.transitionRules[direction] && to.meta.transitionRules[direction].find(path => path === from.path)) {
+            if(to.meta.transitionRules[direction]
+                && (to.meta.transitionRules[direction].find(path => path.replace(':id', to.params.id) === from.path))) {
                 to.meta.transitionName = direction
             }
         })

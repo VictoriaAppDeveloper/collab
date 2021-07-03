@@ -5,7 +5,7 @@
         <li v-for="(item, key) of modelValue" :key="key">
           <UIButton icon
                     :to="{path: item.to}"
-                    :active="item.to.includes(route.path)"
+                    :active="route.path.includes(item.to)"
           >
             <div  class="w-12 h-12 flex justify-center items-center">
               <vue-feather :type="item.icon"></vue-feather>

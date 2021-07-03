@@ -7,6 +7,7 @@
                 'w-full': block,
                 'button--inverted': inverted,
                 'button--active': active,
+                'button--no-hover': noHover
               }, buttonSize()]"
              :to="to"
   >
@@ -45,6 +46,10 @@ export default {
     },
     size: {
       type: String
+    },
+    noHover: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {

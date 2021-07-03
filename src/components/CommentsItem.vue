@@ -2,14 +2,14 @@
   <UICard :id="modelValue.id">
     <template #head>
       <div class="flex justify-between">
-        <div class="flex items-center">
+        <router-link to="/user/1" class="flex items-center">
           <UIAvatar size="8">
             <img :src="modelValue.avatar" alt="" class="object-contain">
           </UIAvatar>
           <span class="ml-2 font-bold" :class="{'font-sm': minimized}">
                 @{{modelValue.name}}
               </span>
-        </div>
+        </router-link>
       </div>
     </template>
     <template #body>

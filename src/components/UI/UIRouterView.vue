@@ -26,7 +26,7 @@ export default {
     const route = useRoute()
     const state = shallowReactive({
       transitionName: DEFAULT_TRANSITION,
-      duration: 500,
+      duration: 200,
       nextComponent: null,
       toDepth: null,
       fromDepth: null,
